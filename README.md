@@ -1,4 +1,4 @@
-# Meteor
+# Meteoroid
 
 Uploading files to Slack. Simple Java Library. 
 
@@ -7,7 +7,7 @@ Uploading files to Slack. Simple Java Library.
 ```java
 File uploadFile = new File(..);
 
-new Meteor.Builder()
+new Meteoroid.Builder()
 	.token("your slack api token")
 	.uploadFile(uploadFile)
 	.channels("#general")
@@ -31,5 +31,5 @@ allprojects {
     }
 }
 
-compile 'com.os.operando.meteor:meteor:1.0.0'
+compile 'com.os.operando.meteoroid:meteoroid:1.0.0'
 ```

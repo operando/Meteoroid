@@ -1,4 +1,4 @@
-package com.os.operando.meteor;
+package com.os.operando.meteoroid;
 
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.MediaType;
@@ -10,7 +10,7 @@ import com.squareup.okhttp.RequestBody;
 import java.io.File;
 import java.io.IOException;
 
-public class Meteor {
+public class Meteoroid {
 
     private File uploadFile;
     private String token;
@@ -20,7 +20,7 @@ public class Meteor {
     private String title;
     private String initialComment;
 
-    private Meteor(Builder builder) {
+    private Meteoroid(Builder builder) {
         if (builder.token == null) {
             new RuntimeException("token is required.");
         }
@@ -112,8 +112,8 @@ public class Meteor {
             return this;
         }
 
-        public Meteor build() {
-            return new Meteor(this);
+        public Meteoroid build() {
+            return new Meteoroid(this);
         }
     }
 }

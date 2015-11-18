@@ -45,19 +45,19 @@ artifacts {
     archives javadocJar
 }
 
-group = 'com.os.operando.meteor'
-version = '1.0.1'
+group = 'com.os.operando.meteoroid'
+version = '1.0.0'
 
-def siteUrl = 'https://github.com/operando/Meteor'
-def gitUrl = 'https://github.com/operando/Meteor.git'
-def issueUrl = 'https://github.com/operando/Meteor/issues'
+def siteUrl = 'https://github.com/operando/Meteoroid'
+def gitUrl = 'https://github.com/operando/Meteoroid.git'
+def issueUrl = 'https://github.com/operando/Meteoroid/issues'
 
 publishing {
     publications {
         MyPublication(MavenPublication) {
             from components.java
             groupId group
-            artifactId 'meteor'
+            artifactId 'meteoroid'
             version version
         }
     }
@@ -69,7 +69,7 @@ bintray {
     publications = ['MyPublication']
     pkg {
         repo = 'maven'
-        name = 'meteor'
+        name = 'meteoroid'
         desc = 'Uploading files to Slack.'
         licenses = ['Apache-2.0']
         websiteUrl = siteUrl
