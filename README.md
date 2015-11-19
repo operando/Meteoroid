@@ -31,5 +31,5 @@ allprojects {
     }
 }
 
-compile 'com.os.operando.meteoroid:meteoroid:1.0.0'
+compile 'com.os.operando.meteoroid:meteoroid:1.0.1'
 ```
