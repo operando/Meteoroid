@@ -7,6 +7,21 @@ Uploading files to Slack. Simple Java Library.
 ```java
 File uploadFile = new File(..);
 
+Response response = new Meteoroid.Builder()
+	.token("your slack api token")
+	.uploadFile(uploadFile)
+	.channels("#general")
+	.title("test titke")
+	.initialComment("test comment")
+	.build()
+	.post();
+```
+
+or
+
+```java
+File uploadFile = new File(..);
+
 new Meteoroid.Builder()
 	.token("your slack api token")
 	.uploadFile(uploadFile)
@@ -14,7 +29,7 @@ new Meteoroid.Builder()
 	.title("test titke")
 	.initialComment("test comment")
 	.build()
-	.post(this);
+	.post(callback);
 ```
 
 
