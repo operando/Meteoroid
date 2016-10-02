@@ -1,11 +1,6 @@
 package com.os.operando.meteoroid;
 
-import com.squareup.okhttp.Callback;
-import com.squareup.okhttp.MediaType;
-import com.squareup.okhttp.MultipartBuilder;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.RequestBody;
+import okhttp3.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -36,9 +31,23 @@ public class Meteoroid {
         initialComment = builder.initialComment;
     }
 
+    public Response post() throws IOException {
+        RequestBody requestBody = createRequestBody();
+        Request request = createRequest(requestBody);
+        OkHttpClient client = new OkHttpClient();
+        return client.newCall(request).execute();
+    }
+
     public void post(Callback callback) throws IOException {
-        MultipartBuilder multipartBuilder = new MultipartBuilder();
-        multipartBuilder.type(MultipartBuilder.FORM);
+        RequestBody requestBody = createRequestBody();
+        Request request = createRequest(requestBody);
+        OkHttpClient client = new OkHttpClient();
+        client.newCall(request).enqueue(callback);
+    }
+
+    private RequestBody createRequestBody() {
+        MultipartBody.Builder multipartBuilder = new MultipartBody.Builder();
+        multipartBuilder.setType(MultipartBody.FORM);
         multipartBuilder.addFormDataPart("file", uploadFile.getName(),
                 RequestBody.create(MediaType.parse(mediaType != null ? mediaType : ""), uploadFile));
         multipartBuilder.addFormDataPart("token", token);
@@ -54,15 +63,14 @@ public class Meteoroid {
         if (initialComment != null) {
             multipartBuilder.addFormDataPart("initial_comment", initialComment);
         }
-        RequestBody requestBody = multipartBuilder.build();
+        return multipartBuilder.build();
+    }
 
-        Request request = new Request.Builder()
+    private Request createRequest(RequestBody requestBody) {
+        return new Request.Builder()
                 .url("https://slack.com/api/files.upload")
                 .post(requestBody)
                 .build();
-
-        OkHttpClient client = new OkHttpClient();
-        client.newCall(request).enqueue(callback);
     }
 
     public static final class Builder {
