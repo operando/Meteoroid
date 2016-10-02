@@ -33,6 +33,11 @@ new Meteoroid.Builder()
 ```
 
 
+## Dependencies
+
+* [okhttp](https://github.com/square/okhttp)
+ * Http Client
+
 ## Download
 
 Gradle:
