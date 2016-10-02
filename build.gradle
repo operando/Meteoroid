@@ -45,7 +45,7 @@ artifacts {
 }
 
 group = 'com.os.operando.meteoroid'
-version = '1.0.1'
+version = '1.2.0'
 
 def siteUrl = 'https://github.com/operando/Meteoroid'
 def gitUrl = 'https://github.com/operando/Meteoroid.git'
